@@ -40,16 +40,19 @@ color1 = 'tab:blue'
 
 
 FontSize = 32
-
+ParamsFontSize = '24'
 
 labels =  ["shasum" , "face-detect" , "qrcode", "face-blur", "BST"]
+
+plotWidthInche = 18
+plotHeightInche = 9
 
 
 def plotResultCaching():
     print("Plot Result caching")
     fileName = "resultCaching.png"
-    plt.rcParams['font.size'] = '22'
-    x = np.arange(len(labels))  # the label locations
+    plt.rcParams['font.size'] = ParamsFontSize
+    x = np.arange(len(labels))  
     fig, ax = plt.subplots()
     rects1 = ax.bar(x, round_robin_result_caching, color = 'white', width = barWidth, edgecolor = 'black', capsize=7, 
     label='Round-Robin')
@@ -57,7 +60,7 @@ def plotResultCaching():
      hatch="||")
     rects3 = ax.bar(x + 2*barWidth, CCBS_result_caching, color = 'white', width = barWidth, edgecolor = 'black', capsize=7, 
     label='CCBS',hatch="\\\\")
-    # Add some text for labels, title and custom x-axis tick labels, etc.
+
     ax.set_ylabel('Average Execution Time (ms)', fontsize=FontSize)
     ax.set_xlabel('Functions Name', fontsize=FontSize)
     ax.set_xticks(x)
@@ -66,9 +69,8 @@ def plotResultCaching():
     for label in (ax.get_xticklabels() + ax.get_yticklabels()):
 	    label.set_fontsize(FontSize) 
     ax.legend()
-    # ax.bar_label(rects1, padding=3)
-    # ax.bar_label(rects2, padding=3)
-    fig.set_size_inches(18, 9)
+  
+    fig.set_size_inches(plotWidthInche, plotHeightInche)
     fig.tight_layout()
     fig.savefig(fileName, dpi=100, pad_inches=0)
     plt.show()
@@ -77,7 +79,7 @@ def plotResultCaching():
 def plotResultCachingInController():
     print("Plot result caching RR - In Controller - CSD")
     fileName = "resultCachingInController.png"
-    plt.rcParams['font.size'] = '22'
+    plt.rcParams['font.size'] = ParamsFontSize
     x = np.arange(len(labels))  # the label locations
     fig, ax = plt.subplots()
     rects1 = ax.bar(x, round_robin_result_caching, color = 'white', width = barWidth, edgecolor = 'black', capsize=7, 
@@ -86,7 +88,7 @@ def plotResultCachingInController():
      label='Cache In Controller', hatch="||")
     rects3 = ax.bar(x + 2*barWidth, CSD_result_caching, color = 'white', width = barWidth, edgecolor = 'black', capsize=7, 
     label='CSD',hatch="\\\\")
-    # Add some text for labels, title and custom x-axis tick labels, etc.
+
     ax.set_ylabel('Average Execution Time (ms)', fontsize=FontSize)
     ax.set_xlabel('Functions Name', fontsize=FontSize)
     ax.set_xticks(x)
@@ -95,9 +97,8 @@ def plotResultCachingInController():
     for label in (ax.get_xticklabels() + ax.get_yticklabels()):
 	    label.set_fontsize(FontSize) 
     ax.legend()
-    # ax.bar_label(rects1, padding=3)
-    # ax.bar_label(rects2, padding=3)
-    fig.set_size_inches(18, 9)
+ 
+    fig.set_size_inches(plotWidthInche, plotHeightInche)
     fig.tight_layout()
     fig.savefig(fileName, dpi=100, pad_inches=0)
     plt.show()
@@ -107,8 +108,8 @@ def plotResultCachingInController():
 def plotContentCaching():
     print("Plot Content caching")
     fileName = "ContentCaching.png"
-    plt.rcParams['font.size'] = '22'
-    x = np.arange(len(labels))  # the label locations
+    plt.rcParams['font.size'] = ParamsFontSize
+    x = np.arange(len(labels)) 
     fig, ax = plt.subplots()
     rects1 = ax.bar(x, round_robin_content_caching, color = 'white', width = barWidth, edgecolor = 'black', capsize=7, 
     label='Round-Robin')
@@ -116,7 +117,7 @@ def plotContentCaching():
      hatch="||")
     rects3 = ax.bar(x + 2*barWidth, CCBS_content_caching, color = 'white', width = barWidth, edgecolor = 'black', capsize=7, 
     label='CCBS',hatch="\\\\")
-    # Add some text for labels, title and custom x-axis tick labels, etc.
+
     ax.set_ylabel('Average Execution Time (ms)', fontsize=FontSize)
     ax.set_xlabel('Functions Name', fontsize=FontSize)
     ax.set_xticks(x)
@@ -126,14 +127,9 @@ def plotContentCaching():
 	    label.set_fontsize(FontSize) 
     ax.legend()
 
-    # ax.bar_label(rects1, padding=3)
-    # ax.bar_label(rects2, padding=3)
-    fig.set_size_inches(18, 9)
+    fig.set_size_inches(plotWidthInche, plotHeightInche)
     fig.tight_layout()
     fig.savefig(fileName, dpi=100, pad_inches=0)
-    # plt.xticks(fontsize=FontSize)
-    # plt.rc('label', fontsize=FontSize) 
-    
 
     plt.show()
 
@@ -141,14 +137,14 @@ def plotContentCaching():
 def plotInControllerCachingInDifferentSizes():
     print("Plot In Controller caching in different sizes")
     fileName = "resultCachingInController_differentSizes.png"
-    plt.rcParams['font.size'] = '22'
+    plt.rcParams['font.size'] = ParamsFontSize
     x = np.arange(len(labels))  # the label locations
     fig, ax = plt.subplots()
     rects1 = ax.bar(x, cacheInControllerSize4, color = 'white', width = barWidth, edgecolor = 'black', capsize=7, 
     label='Size = 4')
     rects2 = ax.bar(x + barWidth, cacheInControllerSize8, color = 'white', width = barWidth, edgecolor = 'black', capsize=7, 
     label='Size = 8', hatch="||")
-    # Add some text for labels, title and custom x-axis tick labels, etc.
+
     ax.set_ylabel('Average Execution Time (ms)', fontsize=FontSize)
     ax.set_xlabel('Functions Name', fontsize=FontSize)
     ax.set_xticks(x)
@@ -157,9 +153,8 @@ def plotInControllerCachingInDifferentSizes():
     for label in (ax.get_xticklabels() + ax.get_yticklabels()):
 	    label.set_fontsize(FontSize) 
     ax.legend()
-    # ax.bar_label(rects1, padding=3)
-    # ax.bar_label(rects2, padding=3)
-    fig.set_size_inches(18, 9)
+
+    fig.set_size_inches(plotWidthInche, plotHeightInche)
     fig.tight_layout()
     fig.savefig(fileName, dpi=100, pad_inches=0)
     plt.show()
@@ -169,8 +164,8 @@ def plotInControllerCachingInDifferentSizes():
 def plotResultCachingInDifferentSizes():
     print("Plot Result caching in different sizes")
     fileName = "resultCaching_differentSizes.png"
-    plt.rcParams['font.size'] = '22'
-    x = np.arange(len(labels))  # the label locations
+    plt.rcParams['font.size'] = ParamsFontSize
+    x = np.arange(len(labels)) 
     fig, ax = plt.subplots()
     rects1 = ax.bar(x, result_cache_Size4, color = 'white', width = barWidth, edgecolor = 'black', capsize=7, 
     label='Size = 4')
@@ -178,7 +173,7 @@ def plotResultCachingInDifferentSizes():
     label='Size = 6', hatch="||")
     rects3 = ax.bar(x + 2*barWidth, result_cache_Size9, color = 'white', width = barWidth, edgecolor = 'black', capsize=7, 
     label='Size = 9', hatch="\\\\")
-    # Add some text for labels, title and custom x-axis tick labels, etc.
+
     ax.set_ylabel('Average Execution Time (ms)', fontsize=FontSize)
     ax.set_xlabel('Functions Name', fontsize=FontSize)
     ax.set_xticks(x)
@@ -187,9 +182,8 @@ def plotResultCachingInDifferentSizes():
     for label in (ax.get_xticklabels() + ax.get_yticklabels()):
 	    label.set_fontsize(FontSize) 
     ax.legend()
-    # ax.bar_label(rects1, padding=3)
-    # ax.bar_label(rects2, padding=3)
-    fig.set_size_inches(18, 9)
+  
+    fig.set_size_inches(plotWidthInche, plotHeightInche)
     fig.tight_layout()
     fig.savefig(fileName, dpi=100, pad_inches=0)
     plt.show()
@@ -200,8 +194,8 @@ def plotResultCachingTAHCandFoCInDifferentSizes():
     print("Plot TAHCandFoC  Result caching in different sizes")
     fileName = "TAHCandFoC_resultCaching_differentSizes.png"
     barWidth = 0.22
-    plt.rcParams['font.size'] = '24'
-    x = np.arange(len(labels))  # the label locations
+    plt.rcParams['font.size'] = ParamsFontSize
+    x = np.arange(len(labels))  
     fig, ax = plt.subplots()
     rects1 = ax.bar(x - 1.5*barWidth, cacheInControllerSize5, color = 'white', width = barWidth, edgecolor = color1, capsize=7, 
     label='FoC Size = 5')
@@ -211,7 +205,7 @@ def plotResultCachingTAHCandFoCInDifferentSizes():
     label='TAHC Size = 5', hatch="\\\\")
     rects4 = ax.bar(x + 1.5*barWidth, cacheInControllerSize10, color = 'white', width = barWidth, edgecolor = color4, capsize=7, 
     label='TAHC Size = 10', hatch="-")
-    # Add some text for labels, title and custom x-axis tick labels, etc.
+
     ax.set_ylabel('Average Execution Time (ms)', fontsize=FontSize)
     ax.set_xlabel('Functions Name', fontsize=FontSize)
     ax.set_xticks(x)
@@ -220,9 +214,8 @@ def plotResultCachingTAHCandFoCInDifferentSizes():
     for label in (ax.get_xticklabels() + ax.get_yticklabels()):
 	    label.set_fontsize(FontSize) 
     ax.legend()
-    # ax.bar_label(rects1, padding=3)
-    # ax.bar_label(rects2, padding=3)
-    fig.set_size_inches(18, 9)
+ 
+    fig.set_size_inches(plotWidthInche, plotHeightInche)
     fig.tight_layout()
     fig.savefig(fileName, dpi=100, pad_inches=0)
     plt.show()
@@ -232,15 +225,15 @@ def plotResultCachingTAHCInDifferentSizes():
     print("Plot TAHC  Result caching in different sizes")
     fileName = "TAHC_resultCaching_differentSizes.png"
     barWidth = 0.15
-    plt.rcParams['font.size'] = '24'
-    x = np.arange(len(labels))  # the label locations
+    plt.rcParams['font.size'] = ParamsFontSize
+    x = np.arange(len(labels)) 
     fig, ax = plt.subplots()
 
     rects3 = ax.bar(x - 0.5*barWidth, cacheSchedulerSize5, color = 'white', width = barWidth, edgecolor = color1, capsize=7, 
     label='TAHC Size = 5', hatch="")
     rects4 = ax.bar(x + 0.5*barWidth, cacheInControllerSize10, color = 'white', width = barWidth, edgecolor = color2, capsize=7, 
     label='TAHC Size = 10', hatch="\\\\")
-    # Add some text for labels, title and custom x-axis tick labels, etc.
+
     ax.set_ylabel('Average Execution Time (ms)', fontsize=FontSize)
     ax.set_xlabel('Functions Name', fontsize=FontSize)
     ax.set_xticks(x)
@@ -249,9 +242,8 @@ def plotResultCachingTAHCInDifferentSizes():
     for label in (ax.get_xticklabels() + ax.get_yticklabels()):
 	    label.set_fontsize(FontSize) 
     ax.legend()
-    # ax.bar_label(rects1, padding=3)
-    # ax.bar_label(rects2, padding=3)
-    fig.set_size_inches(18, 9)
+    
+    fig.set_size_inches(plotWidthInche, plotHeightInche)
     fig.tight_layout()
     fig.savefig(fileName, dpi=100, pad_inches=0)
     plt.show()    
@@ -261,15 +253,14 @@ def plotResultCachingFoCInDifferentSizes():
     print("Plot FoC  Result caching in different sizes")
     fileName = "FoC_resultCaching_differentSizes.png"
     barWidth = 0.15
-    plt.rcParams['font.size'] = '24'
-    x = np.arange(len(labels))  # the label locations
+    plt.rcParams['font.size'] = ParamsFontSize
+    x = np.arange(len(labels)) 
     fig, ax = plt.subplots()
     rects1 = ax.bar(x - 0.5*barWidth, cacheInControllerSize5, color = 'white', width = barWidth, edgecolor = color1, capsize=7, 
     label='FoC Size = 5')
     rects2 = ax.bar(x + 0.5*barWidth, cacheInControllerSize10, color = 'white', width = barWidth, edgecolor = color2, capsize=7, 
     label='FoC Size = 10', hatch="||")
 
-    # Add some text for labels, title and custom x-axis tick labels, etc.
     ax.set_ylabel('Average Execution Time (ms)', fontsize=FontSize)
     ax.set_xlabel('Functions Name', fontsize=FontSize)
     ax.set_xticks(x)
@@ -278,9 +269,8 @@ def plotResultCachingFoCInDifferentSizes():
     for label in (ax.get_xticklabels() + ax.get_yticklabels()):
 	    label.set_fontsize(FontSize) 
     ax.legend()
-    # ax.bar_label(rects1, padding=3)
-    # ax.bar_label(rects2, padding=3)
-    fig.set_size_inches(18, 9)
+  
+    fig.set_size_inches(plotWidthInche, plotHeightInche)
     fig.tight_layout()
     fig.savefig(fileName, dpi=100, pad_inches=0)
     plt.show()
@@ -289,8 +279,8 @@ def plotResultCachingFoCInDifferentSizes():
 def plotResultCachingTypicalFoCTAHC():
     print("Plot Result caching in Typical FoC TAHC")
     fileName = "resultCaching_TypicalFoCTAH_cacheSize5.png"
-    plt.rcParams['font.size'] = '24'
-    x = np.arange(len(labels))  # the label locations
+    plt.rcParams['font.size'] = ParamsFontSize
+    x = np.arange(len(labels))  
     fig, ax = plt.subplots()
     rects1 = ax.bar(x - barWidth, round_robin_result_caching, color = 'white', width = barWidth, edgecolor = color1, capsize=7, 
     label='Typical')
@@ -298,7 +288,7 @@ def plotResultCachingTypicalFoCTAHC():
     label='FoC', hatch="||")
     rects3 = ax.bar(x + barWidth, cacheSchedulerSize5, color = 'white', width = barWidth, edgecolor = color3, capsize=7, 
     label='TAHC', hatch="\\\\")
-    # Add some text for labels, title and custom x-axis tick labels, etc.
+
     ax.set_ylabel('Average Execution Time (ms)', fontsize=FontSize)
     ax.set_xlabel('Functions Name', fontsize=FontSize)
     ax.set_xticks(x)
@@ -307,9 +297,8 @@ def plotResultCachingTypicalFoCTAHC():
     for label in (ax.get_xticklabels() + ax.get_yticklabels()):
 	    label.set_fontsize(FontSize) 
     ax.legend()
-    # ax.bar_label(rects1, padding=3)
-    # ax.bar_label(rects2, padding=3)
-    fig.set_size_inches(18, 9)
+  
+    fig.set_size_inches(plotWidthInche, plotHeightInche)
     fig.tight_layout()
     fig.savefig(fileName, dpi=100, pad_inches=0)
     plt.show()
@@ -318,8 +307,8 @@ def plotResultCachingTypicalFoCTAHC():
 def plotResultCachingTypicalTAHCBatch():
     print("Plot Result caching in Typical TAHC Batch")
     fileName = "resultCaching_TypicalTAHBatch_cacheSize5.png"
-    plt.rcParams['font.size'] = '24'
-    x = np.arange(len(labels))  # the label locations
+    plt.rcParams['font.size'] = ParamsFontSize
+    x = np.arange(len(labels))
     fig, ax = plt.subplots()
     rects1 = ax.bar(x - barWidth, round_robin_result_caching, color = 'white', width = barWidth, edgecolor = color1, capsize=7, 
     label='Typical')
@@ -327,7 +316,7 @@ def plotResultCachingTypicalTAHCBatch():
     label='TAHC', hatch="||")
     rects3 = ax.bar(x + barWidth, batchIncacheSchedulerSize5, color = 'white', width = barWidth, edgecolor = color3, capsize=7, 
     label='B-TAHC', hatch="\\\\")
-    # Add some text for labels, title and custom x-axis tick labels, etc.
+
     ax.set_ylabel('Average Execution Time (ms)', fontsize=FontSize)
     ax.set_xlabel('Functions Name', fontsize=FontSize)
     ax.set_xticks(x)
@@ -336,9 +325,8 @@ def plotResultCachingTypicalTAHCBatch():
     for label in (ax.get_xticklabels() + ax.get_yticklabels()):
 	    label.set_fontsize(FontSize) 
     ax.legend()
-    # ax.bar_label(rects1, padding=3)
-    # ax.bar_label(rects2, padding=3)
-    fig.set_size_inches(18, 9)
+    
+    fig.set_size_inches(plotWidthInche, plotHeightInche)
     fig.tight_layout()
     fig.savefig(fileName, dpi=100, pad_inches=0)
     plt.show()
